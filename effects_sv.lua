@@ -17,11 +17,3 @@ QBCore.Functions.CreateUseableItem("meth_packaged", function(source, item)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['meth_packaged'], 'remove', 1)
     end
 end)
-
--- QBCore.Functions.CreateUseableItem("fpweedbagg", function(source, item)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
--- 	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
---         TriggerClientEvent("fp-drugs:client:useweedbag", src)
---     end
--- end)

@@ -110,39 +110,3 @@ RegisterNetEvent("fp-drugs:client:usecokebag", function()
         QBCore.Functions.Notify("Canceled..", "error")
     end)
 end)
-
-function CokeBaggyEffectv2()
-    local startStamina = 20
-    AlienEffectv2()
-    SetRunSprintMultiplierForPlayer(PlayerId(), 1.1)
-    while startStamina > 0 do 
-        Citizen.Wait(1000)
-        if math.random(1, 100) < 20 then
-            RestorePlayerStamina(PlayerId(), 1.0)
-        end
-        startStamina = startStamina - 1
-        if math.random(1, 100) < 10 and IsPedRunning(PlayerPedId()) then
-            SetPedToRagdoll(PlayerPedId(), math.random(1000, 3000), math.random(1000, 3000), 3, 0, 0, 0)
-        end
-        if math.random(1, 300) < 10 then
-            AlienEffectv2()
-            Citizen.Wait(math.random(3000, 6000))
-        end
-    end
-    if IsPedRunning(PlayerPedId()) then
-        SetPedToRagdoll(PlayerPedId(), math.random(1000, 3000), math.random(1000, 3000), 3, 0, 0, 0)
-    end
-    startStamina = 0
-    SetRunSprintMultiplierForPlayer(PlayerId(), 1.0)
-end
-
-function AlienEffectv2()
-    StartScreenEffect("DrugsMichaelAliensFightIn", 3.0, 0)
-    Citizen.Wait(math.random(5000, 8000))
-    StartScreenEffect("DrugsMichaelAliensFight", 3.0, 0)
-    Citizen.Wait(math.random(5000, 8000))    
-    StartScreenEffect("DrugsMichaelAliensFightOut", 3.0, 0)
-    StopScreenEffect("DrugsMichaelAliensFightIn")
-    StopScreenEffect("DrugsMichaelAliensFight")
-    StopScreenEffect("DrugsMichaelAliensFightOut")
-end
